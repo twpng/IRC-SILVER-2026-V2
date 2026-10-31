@@ -2,12 +2,10 @@ package frc.robot.mechanisms;
 
 import org.team4159.commandsv3backport.command3.Command;
 import org.team4159.commandsv3backport.command3.Mechanism;
-import org.team4159.commandsv3backport.command3.button.CommandNiDsXboxController;
 
 import com.revrobotics.PersistMode;
 import com.revrobotics.ResetMode;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
-import com.revrobotics.spark.SparkBase;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.SparkMaxConfig;
 
