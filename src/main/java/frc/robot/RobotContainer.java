@@ -1,0 +1,35 @@
+// Copyright (c) FIRST and other WPILib contributors.
+// Open Source Software; you can modify and/or share it under the terms of
+// the WPILib BSD license file in the root directory of this project.
+
+package frc.robot;
+
+import org.team4159.commandsv3backport.command3.Command;
+import org.team4159.commandsv3backport.command3.Trigger;
+import org.team4159.commandsv3backport.command3.button.CommandNiDsXboxController;
+
+import frc.robot.mechanisms.Arm;
+import frc.robot.mechanisms.Drivetrain;
+
+public class RobotContainer {
+  private final Drivetrain drivetrain = new Drivetrain();
+  //Controller port is 0
+  private final CommandNiDsXboxController controller = new CommandNiDsXboxController(0);
+  private final Command driveCommand = drivetrain.driveCommand(controller);
+  public RobotContainer() {
+    drivetrain.setDefaultCommand(driveCommand);
+    configureBindings();
+  }
+
+  private void configureBindings() {
+    armUpButton.whileTrue(arm.liftCommand(0.25));
+    armDownButton.whileTrue(arm.liftCommand(-0.25));
+  }
+
+  public Command getAutonomousCommand() {
+    return AutoFactory.autoCommand(drivetrain, arm);
+  }
+  private final Arm arm = new Arm();
+  private final Trigger armUpButton = controller.y();
+  private final Trigger armDownButton = controller.a();
+}
